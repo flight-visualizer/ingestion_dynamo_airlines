@@ -8,7 +8,7 @@ resource "aws_dynamodb_table" "airline_table" {
   read_capacity  = 20
   write_capacity = 20
   hash_key       = "iata"
-  range_key      = "airline"
+  range_key      = "airline_name"
 
   attribute {
     name = "iata"
@@ -16,7 +16,7 @@ resource "aws_dynamodb_table" "airline_table" {
   }
 
   attribute {
-    name = "airline"
+    name = "airline_name"
     type = "S"
   }
 
