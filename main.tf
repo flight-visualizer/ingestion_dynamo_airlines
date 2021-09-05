@@ -3,26 +3,26 @@ provider "aws" {
 }
 
 resource "aws_dynamodb_table" "airline_table" {
-  name           = "ingestion_dynamo_airlines"
+  name           = "cache_dynamo_flights"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
-  hash_key       = "iata"
-  range_key      = "airline_name"
+  hash_key       = "airline_iata"
+  range_key      = "flight_number"
 
   attribute {
-    name = "iata"
+    name = "airline_iata"
     type = "S"
   }
 
   attribute {
-    name = "airline_name"
-    type = "S"
+    name = "flight_number"
+    type = "N"
   }
 
   ttl {
     attribute_name = "TimeToExist"
-    enabled        = false
+    enabled        = true
   }
 }
 
